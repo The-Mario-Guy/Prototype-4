@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     public int waveNumber = 1;
     public GameObject powerUpPrefab;
     public GameObject enemyPrefab;
+    [SerializeField] TextMeshProUGUI waveText;
     private float spawnRange = 9.0f;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class SpawnManager : MonoBehaviour
         if (enemyCount == 0)
         {
             waveNumber++;
+            waveText.text = waveNumber.ToString();
             if (enemyCount == 0)
             {
                 Instantiate(powerUpPrefab, GenerateSpawnPosition(), powerUpPrefab.transform.rotation);
